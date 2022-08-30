@@ -3,7 +3,8 @@ package io.mosip.idp.core.spi;
 import io.mosip.idp.core.dto.TokenRequest;
 import io.mosip.idp.core.dto.TokenResponse;
 import io.mosip.idp.core.exception.IdPException;
-import org.jose4j.jwk.JsonWebKeySet;
+
+import java.util.Map;
 
 public interface OAuthService {
 
@@ -30,5 +31,6 @@ public interface OAuthService {
      * API to get list of IdP public keys
      * @return list of all the keys used to sign access-token, id-token and user kyc data
      */
-    JsonWebKeySet getJwks();
+    Map<String, Object> getJwks() throws Exception;
+
 }
