@@ -4,12 +4,12 @@ import io.mosip.idp.core.dto.TokenRequest;
 import io.mosip.idp.core.dto.TokenResponse;
 import io.mosip.idp.core.exception.IdPException;
 import io.mosip.idp.core.spi.OAuthService;
-import org.jose4j.jwk.JsonWebKeySet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/oauth")
@@ -26,7 +26,7 @@ public class OAuthController {
     }
 
     @GetMapping("/.well-known/jwks.json")
-    public JsonWebKeySet getAllJwks() {
+    public Map<String, Object> getAllJwks() throws Exception {
         return oAuthService.getJwks();
     }
 }

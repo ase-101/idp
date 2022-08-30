@@ -66,7 +66,8 @@ public class ClientManagementServiceImpl implements ClientManagementService {
             throw new IdPException(ErrorConstants.INVALID_CLIENT_ID);
         }
 
-        ClientDetail clientDetail = result.get();
+        var clientDetail = result.get();
+        clientDetail.setName(clientDetailUpdateRequest.getClientName());
         clientDetail.setLogoUri(clientDetailUpdateRequest.getLogoUri());
         clientDetail.setRedirectUris(String.join(",", clientDetailUpdateRequest.getRedirectUris()));
         clientDetail.setClaims(String.join(",", clientDetailUpdateRequest.getUserClaims()));
